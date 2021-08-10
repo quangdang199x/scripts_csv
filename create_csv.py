@@ -1,3 +1,4 @@
+from os import error
 from numpy import dtype, flatiter
 import pandas as pd
 from pandas.core.frame import DataFrame
@@ -28,7 +29,7 @@ for value in activePower:
 
 round_dailyEnergy = []
 for eg  in dailyEnergy:
-    eg = round(eg)
+    eg = int(round(eg, -3))
     round_dailyEnergy.append(eg)
 
 k = 1
@@ -44,21 +45,71 @@ for giatri in round_dailyEnergy:
         k += 1
         q += 1
 
+web_dailyEnergy = 422000 #int(input("Nhap vao so dailyEnergy tren Website: "))
+energy_15p = []
+if max(round_dailyEnergy) <= web_dailyEnergy:
+    socanbu = web_dailyEnergy - max(round_dailyEnergy)
+    for add in sub_daliyEnergy:
+        if socanbu <= 5000:
+            if add == max(sub_daliyEnergy):
+                if sub_daliyEnergy.count(max(sub_daliyEnergy)) == 1:
+                    add = max(sub_daliyEnergy) + socanbu
+                    phandu = 0
+                elif sub_daliyEnergy.count(max(sub_daliyEnergy)) == 2:
+                    if socanbu % 2000 == 0:
+                        add = max(sub_daliyEnergy) + socanbu
+                    elif socanbu % 2000 != 0:
+                        add = max(sub_daliyEnergy)  + (socanbu//2000)*1000
+                        phandu = socanbu - 2000*(socanbu//2000)
+                elif sub_daliyEnergy.count(max(sub_daliyEnergy)) == 3:
+                    if socanbu % 3000 == 0:
+                        add = max(sub_daliyEnergy) + socanbu
+                    elif socanbu % 3000 != 0:
+                        add = max(sub_daliyEnergy) + (socanbu//3000)*1000
+                        phandu = socanbu - 3000*(socanbu//3000)   
+                else:
+                    print(f"Out range!!")
+                energy_15p.append(add)
+                
+            elif add != max(sub_daliyEnergy):
+                add = add
+                energy_15p.append(add)
+               
+        elif 5000 < add < 15000:
+            pass
+        
+        
+    pass
+    
+elif max(round_dailyEnergy) > web_dailyEnergy:
+    socanbu = max(round_dailyEnergy) - web_dailyEnergy     
 
+    pass
 
-# list_Asset = [input("Nhap vao Asset: ")]
-# list_Scope = [input("Nhap vao Scope: ")]
+thamchieu = 90000000 #Example, dung function or input() 
+active_energy = [thamchieu]
+count = 0
+for energy in energy_15p:
+    energy = active_energy[count] + energy
+    active_energy.append(energy)
+    count += 1
 
-# dataframe = pd.DataFrame(
-#     {
-#         "time" : df_2["time"],
-#         "asset" : list_Asset*53,
-#         "scope" : list_Scope*53,
-#         "active_power" : df_1["active_power"],
-#         "active_energy" :  round_dailyEnergy,
-#         "sub_dailyEnergy" : sub_daliyEnergy,
-#     }
-# )
-# dataframe.to_csv("my_data.csv", index=False)
+delete_firstvalue = active_energy.pop(0)
 
-              
+if max(active_energy) - min(active_energy) == web_dailyEnergy:
+    list_Asset = [input("Nhap vao Asset: ")]
+    list_Scope = [input("Nhap vao Scope: ")]
+    dataframe = pd.DataFrame(
+        {
+            "time" : df_2["time"],
+            "asset" : list_Asset*53,
+            "scope" : list_Scope*53,
+            "active_power" : df_1["active_power"],
+            "active_energy" :  active_energy,
+        }
+    )
+    dataframe.to_csv("inverter.csv", index=False)
+    print(f"Successfully!")
+else: 
+    print(f"Gia tri tinh toan {max(active_energy) - min(active_energy)} khong trung khop voi gia tri {web_dailyEnergy} tren website hang!!")
+             
