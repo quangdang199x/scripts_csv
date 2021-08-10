@@ -14,6 +14,6 @@ A/ Inputs:
     + Tiến hành chia phần daily_energy theo active_power, có thể cộng phần dư hoặc trừ phần thiếu vào các peak power. Hoặc là chia theo tỉ lệ gì đó dựa theo active_power của từng inverter.
     + Dùng lệnh kiểm tra lại các số liệu tính toán xem thử đã chính xác chưa.
 
-B/ Ouput:
+B/ Output:
     + File inverter.csv của từng inverter, sau đó gộp thành một file chung --> import vào databases.
     + Hoặc là xuất ra 1 file chung của tất cả inverter trong site --> import vào databases. 
