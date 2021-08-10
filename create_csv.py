@@ -46,19 +46,19 @@ for giatri in round_dailyEnergy:
 
 
 
-list_Asset = [input("Nhap vao Asset: ")]
-list_Scope = [input("Nhap vao Scope: ")]
+# list_Asset = [input("Nhap vao Asset: ")]
+# list_Scope = [input("Nhap vao Scope: ")]
 
-dataframe = pd.DataFrame(
-    {
-        "time" : df_2["time"],
-        "asset" : list_Asset*53,
-        "scope" : list_Scope*53,
-        "active_power" : df_1["active_power"],
-        "active_energy" :  round_dailyEnergy,
-        "sub_dailyEnergy" : sub_daliyEnergy,
-    }
-)
-dataframe.to_csv("my_data.csv", index=False)
+# dataframe = pd.DataFrame(
+#     {
+#         "time" : df_2["time"],
+#         "asset" : list_Asset*53,
+#         "scope" : list_Scope*53,
+#         "active_power" : df_1["active_power"],
+#         "active_energy" :  round_dailyEnergy,
+#         "sub_dailyEnergy" : sub_daliyEnergy,
+#     }
+# )
+# dataframe.to_csv("my_data.csv", index=False)
 
               
