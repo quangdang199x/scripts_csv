@@ -35,6 +35,7 @@ Thư viện sử dụng để tạo file *.csv là: pandas
 A/ Inputs:
 
 1/ Nhập vào các header cần thiết: time, asset, scope, active_power, active_energy.
+
     + Phần "time" sẽ lấy từ file inverter1.csv để dễ chỉnh sửa thời gian.
 
     + "active_power" sẽ lấy từ file download trên hãng.
@@ -44,6 +45,7 @@ A/ Inputs:
     + "active_energy" sẽ được tính toán dựa vào phần active_power đã download.
 
 2/ Tính toán phần active_energy:
+
     + Xác định được điểm tham chiếu của từng inverter (active_energy).
 
     + Xác định được daily_energy của mỗi inverter trên website của hãng.
@@ -55,6 +57,7 @@ A/ Inputs:
     + Dùng lệnh kiểm tra lại các số liệu tính toán xem thử đã chính xác chưa.
 
 B/ Output:
+
     + File inverter.csv của từng inverter, sau đó gộp thành một file chung --> import vào databases.
 
-    + Hoặc là xuất ra 1 file chung của tất cả inverter trong site --> import vào databases. 
+    + Hoặc là xuất ra 1 file chung của tất cả inverter trong site --> import vào databases.  
