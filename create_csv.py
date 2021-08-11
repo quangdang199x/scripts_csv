@@ -45,8 +45,10 @@ for giatri in round_dailyEnergy:
         k += 1
         q += 1
 
-web_dailyEnergy = 422000 #int(input("Nhap vao so dailyEnergy tren Website: "))
+thamchieu = 90000000 #Example, dung function or input() 
+web_dailyEnergy = 430000 #int(input("Nhap vao so dailyEnergy tren Website: "))
 energy_15p = []
+
 if max(round_dailyEnergy) <= web_dailyEnergy:
     socanbu = web_dailyEnergy - max(round_dailyEnergy)
     for add in sub_daliyEnergy:
@@ -74,10 +76,22 @@ if max(round_dailyEnergy) <= web_dailyEnergy:
             elif add != max(sub_daliyEnergy):
                 add = add
                 energy_15p.append(add)
+                
                
-        elif 5000 < add < 15000:
-            pass
-        
+        elif 5000 < socanbu < 15000:
+            if add == max(sub_daliyEnergy):
+                if sub_daliyEnergy.count(max(sub_daliyEnergy)) == 1:
+                    add = max(sub_daliyEnergy) + (socanbu - (socanbu//5000)*5000)
+                    phandu =(socanbu//5000)*5000
+                elif sub_daliyEnergy.count(max(sub_daliyEnergy)) == 2:
+                    ####
+
+                    pass
+                energy_15p.append(add)
+
+            elif add != max(sub_daliyEnergy):
+                add = add
+                energy_15p.append(add)        
         
     pass
     
@@ -86,30 +100,66 @@ elif max(round_dailyEnergy) > web_dailyEnergy:
 
     pass
 
-thamchieu = 90000000 #Example, dung function or input() 
 active_energy = [thamchieu]
-count = 0
-for energy in energy_15p:
-    energy = active_energy[count] + energy
-    active_energy.append(energy)
-    count += 1
+if socanbu <= 5000:
+    count = 0
+    if phandu == 0: 
+        for energy in energy_15p:
+            energy = active_energy[count] + energy
+            active_energy.append(energy)
+            count += 1
+    elif phandu != 0:
+        energy_15p[26] = energy_15p[26] + phandu 
+        for energy in energy_15p:
+            energy = active_energy[count] + energy
+            active_energy.append(energy)
+            count += 1
+elif 5000 < socanbu < 15000:
+    count = 0
+    if phandu == 0: 
+        for energy in energy_15p:
+            energy = active_energy[count] + energy
+            active_energy.append(energy)
+            count += 1
+    elif phandu != 0:
+        energy_15p[22] = energy_15p[22] + (socanbu//5000)*1000
+        energy_15p[23] = energy_15p[23] + (socanbu//5000)*1000
+        energy_15p[24] = energy_15p[24] + (socanbu//5000)*1000
+        energy_15p[25] = energy_15p[25] + (socanbu//5000)*1000
+        energy_15p[26] = energy_15p[26] + (socanbu//5000)*1000 
+        for energy in energy_15p:
+            energy = active_energy[count] + energy
+            active_energy.append(energy)
+            count += 1
 
 delete_firstvalue = active_energy.pop(0)
 
-if max(active_energy) - min(active_energy) == web_dailyEnergy:
-    list_Asset = [input("Nhap vao Asset: ")]
-    list_Scope = [input("Nhap vao Scope: ")]
-    dataframe = pd.DataFrame(
-        {
-            "time" : df_2["time"],
-            "asset" : list_Asset*53,
-            "scope" : list_Scope*53,
-            "active_power" : df_1["active_power"],
-            "active_energy" :  active_energy,
-        }
-    )
-    dataframe.to_csv("inverter.csv", index=False)
-    print(f"Successfully!")
-else: 
-    print(f"Gia tri tinh toan {max(active_energy) - min(active_energy)} khong trung khop voi gia tri {web_dailyEnergy} tren website hang!!")
-             
+
+print(sub_daliyEnergy)
+print(sum(sub_daliyEnergy))
+print(energy_15p)
+print(sum(energy_15p))
+# print(active_energy)
+# print(len(active_energy))
+
+
+
+
+
+
+# if max(active_energy) - min(active_energy) == web_dailyEnergy:
+#     list_Asset = [input("Nhap vao Asset: ")]
+#     list_Scope = [input("Nhap vao Scope: ")]
+#     dataframe = pd.DataFrame(
+#         {
+#             "time" : df_2["time"],
+#             "asset" : list_Asset*53,
+#             "scope" : list_Scope*53,
+#             "active_power" : df_1["active_power"],
+#             "active_energy" :  active_energy,
+#         }
+#     )
+#     dataframe.to_csv("inverter.csv", index=False)
+#     print(f"Successfully!")
+# else: 
+#     print(f"Gia tri tinh toan {max(active_energy) - min(active_energy)} khong trung khop voi gia tri {web_dailyEnergy} tren website hang!!")
