@@ -15,13 +15,22 @@ class MyInverter:
     def getInverter(self):
         return self.input_activePower
 
+inverter_1 = MyInverter()
+inverter_2 = MyInverter()
+inverter_3 = MyInverter()
+inverter_4 = MyInverter()
+inverter_5 = MyInverter()
+inverter_1.setInverter(DataFrame(MyInverter.active_power, columns=["active_power"]).values)
+inverter_2.setInverter(DataFrame(MyInverter.active_power, columns=["active_power_2"]).values)
+inverter_2.setInverter(DataFrame(MyInverter.active_power, columns=["active_power_3"]).values)
+inverter_2.setInverter(DataFrame(MyInverter.active_power, columns=["active_power_4"]).values)
+inverter_2.setInverter(DataFrame(MyInverter.active_power, columns=["active_power_5"]).values)
+
 def activePower():
-    x = 0
     activePower = []
-    for i in MyInverter.input_activePower:
+    for i in inverter_1.getInverter():
         i = float(i)
         activePower.append(i)
-        x += 1
     return activePower
 
 def dailyEnergy():
@@ -60,9 +69,9 @@ def subtract_dailyEnergy():
     return sub_dailyEnergy
 
 class activeEnergy:
-    def increase_activeEnergy(thamchieu = None, web_dailyEnergy = None):    
+    def increase_activeEnergy(lastDay_totalEnergy = None, web_dailyEnergy = None):    
         energy_15min= []
-        active_energy = [thamchieu]
+        active_energy = [lastDay_totalEnergy]
         count = 0
         m = 0
         for add in subtract_dailyEnergy():
@@ -73,19 +82,15 @@ class activeEnergy:
             while count != (socanbu/1000):
                 energy_15min[20+count] = energy_15min[20+count] + 1000
                 count += 1
-            # energy_15min.pop(0)
-            # energy_15min.append(0)
         elif max(round_DailyEnergy()) > web_dailyEnergy:
             socanbu = max(round_DailyEnergy) - web_dailyEnergy
             if 0 not in activePower[19:45]:
                 while count != (socanbu/1000):
                     energy_15min[20+count] = energy_15min[20+count] - 1000
                     count += 1
-                # energy_15min.pop(0)
-                # energy_15min.append(0)
             else:
                 print(f"Co gia tri power bang 0!")
-            
+
         for energy in energy_15min:
             energy  = active_energy[m] + energy
             active_energy.append(energy)
@@ -96,9 +101,9 @@ class activeEnergy:
         else:
             return sys.exit()
 
-    def decrease_activeEnergy(thamchieu = None, web_dailyEnergy = None):
+    def decrease_activeEnergy(lastDay_totalEnergy = None, web_dailyEnergy = None):
         energy_15min = []
-        active_energy = [thamchieu]
+        active_energy = [lastDay_totalEnergy]
         count = 0
         m = 0
         for add in subtract_dailyEnergy():
@@ -123,7 +128,7 @@ class activeEnergy:
                 energy_15min.reverse()
             else:
                 print(f"Co gia tri power bang 0!")
-        
+
         for energy in energy_15min:
             energy = active_energy[m] - energy
             active_energy.append(energy)
