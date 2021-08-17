@@ -1,17 +1,16 @@
-from create_csv import CreateCSVfile, activeEnergy, MyInverter
-import create_csv
-from pandas.core.frame import DataFrame
+from create_csv import Inverter
 import pandas as pd
+from pandas.core.frame import DataFrame
+import sys
 
-CreateCSVfile.Output(
-    asset="ABB-111871-3Q15-3720", 
-    scope="e5207ce3-5911-4ce3-877f-be4e245e9ddf",
-    activeEnergy=activeEnergy.increase_activeEnergy(lastDay_totalEnergy=90000000, web_dailyEnergy=421000)
-    )
+inverter_1 = Inverter(dataframe=DataFrame(Inverter.read_file, columns=["PVS-100-TL-OUTD SN 115179-3Q15-4020"]).values, lastest_day_energy=90000000, web_dailyEnergy=539000)
+df_1 = inverter_1.create_CSV_files(asset="ABB-115179-3Q15-4020", scope="b107e879-e80b-499d-9e12-2b8c0a6cb4bf")
 
-# CreateCSVfile.Output(
-#     asset="ABB-111871-3Q15-3720",
-#     scope="e5207ce3-5911-4ce3-877f-be4e245e9ddf",
-#     activeEnergy=activeEnergy.decrease_activeEnergy(thamchieu=90000000, web_dailyEnergy=420000)
-# )
+inverter_2 = Inverter(dataframe=DataFrame(Inverter.read_file, columns=["PVS-100-TL-OUTD SN 115190-3Q15-4020"]).values, lastest_day_energy=80000000, web_dailyEnergy=486000)
+df_2 = inverter_2.create_CSV_files(asset="ABB-115190-3Q15-4020", scope="b107e879-e80b-499d-9e12-2b8c0a6cb4bf")
 
+inverter_3 = Inverter(dataframe=DataFrame(Inverter.read_file, columns=["PVS-100-TL-OUTD SN 115228-3Q15-4020"]).values, lastest_day_energy=70000000, web_dailyEnergy=538000)
+df_3 = inverter_3.create_CSV_files(asset="ABB-115228-3Q15-4020", scope="b107e879-e80b-499d-9e12-2b8c0a6cb4bf")
+
+df = df_1.append(df_2).append(df_3)
+df.to_csv("inverter.csv", index=False)

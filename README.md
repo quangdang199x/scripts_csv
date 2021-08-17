@@ -74,7 +74,7 @@ B/ Output:
 
 + [x] Kiểm tra lại tính chính xác của các thông số của một inverter trước khi export ra file inverter.csv;
 
-+ [ ] Xử lý code để xuất được một file chứa giá trị cần import vào databases của tất cả các inverter trong site;
++ [x] Xử lý code để xuất được một file chứa giá trị cần import vào databases của tất cả các inverter trong site;
 
 + [ ] Kiểm tra lại giá trị trước khi export ra file inverter.csv chứa tất cả inverter trong site hoàn chỉnh;
 
