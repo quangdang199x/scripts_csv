@@ -4,9 +4,9 @@ import sys
 
 class Inverter:
     read_file = pd.read_csv("download.csv", header = 0)
-    def __init__(self, dataframe = None, lastest_day_energy = None, web_dailyEnergy = None):
+    def __init__(self, dataframe = None, latest_day_energy = None, web_dailyEnergy = None):
         self.dataframe = dataframe
-        self.lastest_day_energy = lastest_day_energy
+        self.latest_day_energy = latest_day_energy
         self.web_dailyEnergy = web_dailyEnergy
     
     def input_time(self):
@@ -53,7 +53,7 @@ class Inverter:
     
     def increase_activeEnergy(self):
         energy_15min = []
-        active_energy = [self.lastest_day_energy]
+        active_energy = [self.latest_day_energy]
         count_1 = 0
         count_2 = 0
         for value in self.subtract_dailyEnergy():
