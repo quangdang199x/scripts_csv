@@ -83,6 +83,10 @@ class Inverter:
         else:
             return sys.exit()
 
+    def check_value(self):
+        check = max(self.increase_activeEnergy()) - min(self.increase_activeEnergy())
+        return check
+      
     def create_CSV_files(self, asset = None, scope = None):
         dataframe = pd.DataFrame(
             {
@@ -94,4 +98,7 @@ class Inverter:
             }
         )
         return dataframe      
-        
+
+def merge_dataFrame(df_1=None, df_2=None, df_3=None, df_4=None, df_5=None, df_6=None, df_7=None, df_8=None, df_9=None, df_10=None):
+    dataFrame = df_1.append(df_2).append(df_3).append(df_4).append(df_5).append(df_6).append(df_7).append(df_8).append(df_9).append(df_10)
+    return dataFrame.to_csv("inverter.csv", index = False)
