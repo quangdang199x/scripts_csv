@@ -76,6 +76,26 @@ B/ Output:
 
 + [x] Xử lý code để xuất được một file chứa giá trị cần import vào databases của tất cả các inverter trong site;
 
-+ [ ] Kiểm tra lại giá trị trước khi export ra file inverter.csv chứa tất cả inverter trong site hoàn chỉnh;
++ [x] Kiểm tra lại giá trị trước khi export ra file inverter.csv chứa tất cả inverter trong site hoàn chỉnh;
 
 + [ ] Bổ sung phần các giá trị inputs sử dụng JSON or XML;
+
+### Quy trình thực hiện việc tạo và xuất một file CSV:
+
++ File "create_csv.py" chứa các function cần thiết. File "main.py" dùng để chạy chương trình xuất file. Mọi thao tác sẽ làm trên file "main.py";
+
++ Chỉnh lại thời gian trong file "time.csv" cho đúng với ngày còn thiếu;
+
++ Download file chứa phần active power của tất cả inverter trong site về. Copy những thứ cần thiết sang file "download.csv";
+
++ Xác định được total daily energy của tất cả inverter trong site ở ngày cần làm. Nhập giá trị đó vào: "total_dailyEnergy_site = None" ở file "main.py";
+
++ Xác định được số lượng inverter trong site;
+
++ Xác định được web_dailyEnergy ứng với mỗi inverter trong site (lấy giá trị này ở website của hãng inverter);
+
++ Xác định được asset, scope, mốc latest day energy (lấy các giá trị này ở database);
+
++ Sau khi xác định được các mục cần thiết, nhập chúng vào các dòng lệnh tương ứng.
+
++ Chạy file và import vào database.
