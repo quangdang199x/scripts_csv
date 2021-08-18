@@ -98,4 +98,4 @@ B/ Output:
 
 + Sau khi xác định được các mục cần thiết, nhập chúng vào các dòng lệnh tương ứng.
 
-+ Chạy file và import vào database.
++ Chạy file "main.py" và import file "inverter.csv" vừa tạo được vào database.
