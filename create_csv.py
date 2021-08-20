@@ -9,10 +9,6 @@ class Inverter:
         self.latest_day_energy = latest_day_energy
         self.web_dailyEnergy = web_dailyEnergy
     
-    def input_time(self):
-        time = pd.read_csv("time.csv", header=0)
-        return time["time"]
-
     def get_power_inverter(self):
         active_power = []
         for value in self.dataframe:
@@ -66,12 +62,12 @@ class Inverter:
                 count_1 += 1
         elif max(self.round_dailyEnergy()) > self.web_dailyEnergy:
             comp = max(self.round_dailyEnergy()) - self.web_dailyEnergy
-            if 0 not in self.get_power_inverter()[19:45]:
-                while count_1 != (comp/1000):
-                    energy_15min[20+count_1] = energy_15min[20+count_1] - 1000
-                    count_1 += 1
-            else:
-                return sys.exit()
+            # if 0 not in self.get_power_inverter()[20:45]:
+            while count_1 != (comp/1000):
+                energy_15min[20+count_1] = energy_15min[20+count_1] - 1000
+                count_1 += 1
+            # else:
+                #     return sys.exit()
 
         for energy in energy_15min:
             energy = active_energy[count_2] + energy
@@ -87,10 +83,10 @@ class Inverter:
         check = max(self.increase_activeEnergy()) - min(self.increase_activeEnergy())
         return check
       
-    def create_CSV_files(self, asset = None, scope = None):
+    def create_CSV_files(self, asset = None, scope = None, time = None):
         dataframe = pd.DataFrame(
             {
-                "time" : self.input_time(),
+                "time" : time,
                 "asset" : asset,
                 "scope" : scope,
                 "active_power" : [None]*22 + self.get_power_inverter() + [None]*19,
@@ -102,3 +98,15 @@ class Inverter:
 def merge_dataFrame(df_1=None, df_2=None, df_3=None, df_4=None, df_5=None, df_6=None, df_7=None, df_8=None, df_9=None, df_10=None):
     dataFrame = df_1.append(df_2).append(df_3).append(df_4).append(df_5).append(df_6).append(df_7).append(df_8).append(df_9).append(df_10)
     return dataFrame.to_csv("inverter.csv", index = False)
+
+class Real_time:
+    def __init__(self, day = None):
+        self.day = day
+    
+    def July(self):
+        july = pd.read_excel("time.xlsx", sheet_name="July", header=0)
+        return july[self.day]
+    def August(self):
+        august = pd.read_excel("time.xlsx", sheet_name="August", header=0)
+        return august[self.day]
+            
