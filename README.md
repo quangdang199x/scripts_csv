@@ -14,7 +14,7 @@
 
 + [ ] Bổ sung phần các giá trị inputs sử dụng YML;
 
-+ [ ] Tạo hàm để xuất thời gian mà không cần phải đổi bằng tay (tạo 1 file CSV chứa thời gian);
++ [x] Tạo hàm để xuất thời gian mà không cần phải đổi bằng tay (tạo 1 file CSV chứa thời gian);
 
 + [ ] Tạo hàm để xử lý việc xuất được một file "inverter.csv" chứa được nhiều ngày;
 
