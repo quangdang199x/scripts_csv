@@ -1,3 +1,23 @@
+### Tiến độ thực hiện
+
++ [x] Thiết lập các inputs để nhập các thông số cần thiết;
+
++ [x] Làm được phần code xử lý và tính toán các thông số đầu vào;
+
++ [x] Có phần code dùng để xuất được một file chứa giá trị của một inverter mẫu;
+
++ [x] Kiểm tra lại tính chính xác của các thông số của một inverter trước khi export ra file inverter.csv;
+
++ [x] Xử lý code để xuất được một file chứa giá trị cần import vào databases của tất cả các inverter trong site;
+
++ [x] Kiểm tra lại giá trị trước khi export ra file inverter.csv chứa tất cả inverter trong site hoàn chỉnh;
+
++ [ ] Bổ sung phần các giá trị inputs sử dụng YML;
+
++ [ ] Tạo hàm để xuất thời gian mà không cần phải đổi bằng tay (tạo 1 file CSV chứa thời gian);
+
++ [ ] Tạo hàm để xử lý việc xuất được một file "inverter.csv" chứa được nhiều ngày;
+
 # Update database from csv - Single day
 
 ## Procedure
@@ -61,24 +81,6 @@ B/ Output:
     + File inverter.csv của từng inverter, sau đó gộp thành một file chung --> import vào databases.
 
     + Hoặc là xuất ra 1 file chung của tất cả inverter trong site --> import vào databases.  
-
-### Tiến độ thực hiện
-
-+ [x] Cài đặt bộ thư viện dùng để tạo file *.csv (pandas==1.3.1);
-
-+ [x] Thiết lập các inputs để nhập các thông số cần thiết;
-
-+ [x] Làm được phần code xử lý và tính toán các thông số đầu vào;
-
-+ [x] Có phần code dùng để xuất được một file chứa giá trị của một inverter mẫu;
-
-+ [x] Kiểm tra lại tính chính xác của các thông số của một inverter trước khi export ra file inverter.csv;
-
-+ [x] Xử lý code để xuất được một file chứa giá trị cần import vào databases của tất cả các inverter trong site;
-
-+ [x] Kiểm tra lại giá trị trước khi export ra file inverter.csv chứa tất cả inverter trong site hoàn chỉnh;
-
-+ [ ] Bổ sung phần các giá trị inputs sử dụng JSON or XML;
 
 ### Quy trình thực hiện việc tạo và xuất một file CSV:
 
