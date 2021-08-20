@@ -62,13 +62,9 @@ class Inverter:
                 count_1 += 1
         elif max(self.round_dailyEnergy()) > self.web_dailyEnergy:
             comp = max(self.round_dailyEnergy()) - self.web_dailyEnergy
-            # if 0 not in self.get_power_inverter()[20:45]:
             while count_1 != (comp/1000):
                 energy_15min[20+count_1] = energy_15min[20+count_1] - 1000
                 count_1 += 1
-            # else:
-                #     return sys.exit()
-
         for energy in energy_15min:
             energy = active_energy[count_2] + energy
             active_energy.append(energy)
@@ -99,14 +95,44 @@ def merge_dataFrame(df_1=None, df_2=None, df_3=None, df_4=None, df_5=None, df_6=
     dataFrame = df_1.append(df_2).append(df_3).append(df_4).append(df_5).append(df_6).append(df_7).append(df_8).append(df_9).append(df_10)
     return dataFrame.to_csv("inverter.csv", index = False)
 
-class Real_time:
+class Timeline:
     def __init__(self, day = None):
         self.day = day
     
+    def January(self):
+        january = pd.read_excel("time.xlsx", sheet_name="January", header=0)
+        return january[self.day]
+    def February(self):
+        february = pd.read_excel("time.xlsx", sheet_name="February", header=0)
+        return february[self.day]
+    def March(self):
+        march = pd.read_excel("time.xlsx", sheet_name="March", header=0)
+        return march[self.day]
+    def April(self):
+        april = pd.read_excel("time.xlsx", sheet_name="April", header=0)
+        return april[self.day]
+    def May(self):
+        may = pd.read_excel("time.xlsx", sheet_name="May", header=0)
+        return may[self.day]
+    def June(self):
+        june = pd.read_excel("time.xlsx", sheet_name="June", header=0)
+        return june[self.day]
     def July(self):
         july = pd.read_excel("time.xlsx", sheet_name="July", header=0)
         return july[self.day]
     def August(self):
         august = pd.read_excel("time.xlsx", sheet_name="August", header=0)
         return august[self.day]
-            
+    def September(self):
+        september = pd.read_excel("time.xlsx", sheet_name="September", header=0)
+        return september[self.day]
+    def October(self):
+        october = pd.read_excel("time.xlsx", sheet_name="October", header=0)
+        return october[self.day]
+    def November(self):
+        november = pd.read_excel("time.xlsx", sheet_name="November", header=0)
+        return november[self.day]
+    def December(self):
+        december = pd.read_excel("time.xlsx", sheet_name="December", header=0)
+        return december[self.day]
+    

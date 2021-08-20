@@ -1,12 +1,14 @@
-from create_csv import Inverter, merge_dataFrame, Real_time
+from create_csv import Inverter, merge_dataFrame, Timeline
 import pandas as pd
 from pandas.core.frame import DataFrame
 import sys
 
 if __name__ == "__main__":
 
-    day = Real_time(day="2/8")
-    input_time = day.August()
+    day = Timeline(
+        day="5/9"
+    )
+    input_time = day.September()
 
     total_dailyEnergy_site = 1580000
    
