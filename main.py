@@ -6,9 +6,9 @@ import sys
 if __name__ == "__main__":
 
     day = Timeline(
-        day="5/9"
+        day_month_year="6/8/2021"
     )
-    input_time = day.September()
+    input_time = day.August()
 
     total_dailyEnergy_site = 1580000
    
@@ -55,3 +55,4 @@ if __name__ == "__main__":
         print(f"Successfully! Total daily energy: {check_value}Wh.")
     else:
         print(f"Error! Total daily energy: {check_value}Wh does not equal total_dailyEnery_site: {total_dailyEnergy_site}Wh.")
+
