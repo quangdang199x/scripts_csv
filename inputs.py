@@ -1,9 +1,10 @@
 from create_csv import Timeline
 
 ###Inputs:
-number_Day = 7
+number_Day = 3
 number_inverter = 3
 
+# Nhập vào "Entity name":
 class Columns:
     inverter_1 = "PVS-100-TL-OUTD SN 115179-3Q15-4020"
     inverter_2 = "PVS-100-TL-OUTD SN 115190-3Q15-4020"
@@ -13,39 +14,41 @@ class Columns:
     inverter_6 = ""
     inverter_7 = ""
 
+# Nhập vào "total Website energy" cho mỗi ngày:
 class total_dailyEnergy_site:
-    day_1 = 1554000
-    day_2 = 1554000
-    day_3 = 1626000
-    day_4 = 1391000
-    day_5 = 1454000
-    day_6 = 1327000
-    day_7 = 1640000
+    day_1 = 1150000
+    day_2 = 1563000
+    day_3 = 1663000
+    day_4 = 0
+    day_5 = 0
+    day_6 = 0
+    day_7 = 0
 
+# Nhập vào "Daily energy" cho mỗi inverter:
 class Website_Energy_inverter_1:
-    day_number_1 = 517000
-    day_number_2 = 515000
-    day_number_3 = 548000
-    day_number_4 = 459000
-    day_number_5 = 473000
-    day_number_6 = 447000
-    day_number_7 = 531000
+    day_number_1 = 355000
+    day_number_2 = 539000
+    day_number_3 = 563000
+    day_number_4 = 0
+    day_number_5 = 0
+    day_number_6 = 0
+    day_number_7 = 0
 class Website_Energy_inverter_2:
-    day_number_1 = 501000
-    day_number_2 = 513000
-    day_number_3 = 521000
-    day_number_4 = 446000
-    day_number_5 = 480000
-    day_number_6 = 426000
-    day_number_7 = 539000
+    day_number_1 = 381000
+    day_number_2 = 486000
+    day_number_3 = 522000
+    day_number_4 = 0
+    day_number_5 = 0
+    day_number_6 = 0
+    day_number_7 = 0
 class Website_Energy_inverter_3:
-    day_number_1 = 536000
-    day_number_2 = 526000
-    day_number_3 = 557000
-    day_number_4 = 486000
-    day_number_5 = 501000
-    day_number_6 = 454000
-    day_number_7 = 570000
+    day_number_1 = 414000
+    day_number_2 = 538000
+    day_number_3 = 578000
+    day_number_4 = 0
+    day_number_5 = 0
+    day_number_6 = 0
+    day_number_7 = 0
 class Website_Energy_inverter_4:
     day_number_1 = None
     day_number_2 = None
@@ -79,25 +82,28 @@ class Website_Energy_inverter_7:
     day_number_6 = None
     day_number_7 = None
 
+# Nhập vào số "Latest active energy" đã xác định được trên database:
 class latest_day_energy:
-    inverter_1 = 112751000
-    inverter_2 = 103890000
-    inverter_3 = 54809000
+    inverter_1 = 119332000
+    inverter_2 = 110292000
+    inverter_3 = 61662000
     inverter_4 = None
     inverter_5 = None
     inverter_6 = None
     inverter_7 = None
 
 ###Outputs:
+# Chọn ngày và tháng:
 class Output_day:
-    day_1_Setup = Timeline(day_month_year="1/8/2021").August()
-    day_2_Setup = Timeline(day_month_year="2/8/2021").August()
-    day_3_Setup = Timeline(day_month_year="3/8/2021").August()
-    day_4_Setup = Timeline(day_month_year="4/8/2021").August()
-    day_5_Setup = Timeline(day_month_year="5/8/2021").August()
-    day_6_Setup = Timeline(day_month_year="6/8/2021").August()
-    day_7_Setup = Timeline(day_month_year="7/8/2021").August()
+    day_1_Setup = Timeline(day_month_year="15/8/2021").August()
+    day_2_Setup = Timeline(day_month_year="16/8/2021").August()
+    day_3_Setup = Timeline(day_month_year="17/8/2021").August()
+    day_4_Setup = Timeline(day_month_year="11/8/2021").August()
+    day_5_Setup = Timeline(day_month_year="12/8/2021").August()
+    day_6_Setup = Timeline(day_month_year="13/8/2021").August()
+    day_7_Setup = Timeline(day_month_year="14/8/2021").August()
 
+# Nhập vào "asset" và "scope" đã xác định được trên database cho mỗi inverter:
 class Asset:
     inverter_1 = "ABB-115179-3Q15-4020"
     inverter_2 = "ABB-115190-3Q15-4020"
@@ -106,6 +112,5 @@ class Asset:
     inverter_5 = ""
     inverter_6 = ""
     inverter_7 = ""
-
 class Scope:
     scope_all_in_site = "b107e879-e80b-499d-9e12-2b8c0a6cb4bf"
