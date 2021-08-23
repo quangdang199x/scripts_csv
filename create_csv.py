@@ -1,14 +1,18 @@
+from numpy import number
 import pandas as pd
 from pandas.core.frame import DataFrame
 import sys
 
+def sheet_day(sheet_data = None):
+    read_file = pd.read_excel("download.xlsx",sheet_name=sheet_data, header = 0)
+    return read_file
+
 class Inverter:
-    read_file = pd.read_csv("download.csv", header = 0)
     def __init__(self, dataframe = None, latest_day_energy = None, web_dailyEnergy = None):
         self.dataframe = dataframe
         self.latest_day_energy = latest_day_energy
         self.web_dailyEnergy = web_dailyEnergy
-    
+
     def get_power_inverter(self):
         active_power = []
         for value in self.dataframe:
@@ -57,14 +61,24 @@ class Inverter:
             energy_15min.append(value)
         if max(self.round_dailyEnergy()) <= self.web_dailyEnergy:
             comp = self.web_dailyEnergy - max(self.round_dailyEnergy())
-            while count_1 != (comp/1000):
-                energy_15min[20+count_1] = energy_15min[20+count_1] + 1000
-                count_1 += 1
+            if comp <= 20:
+                while count_1 != (comp/1000):
+                    energy_15min[20+count_1] = energy_15min[20+count_1] + 1000
+                    count_1 += 1
+            elif comp > 20:
+                while count_1 != (comp/1000):
+                    energy_15min[12+count_1] = energy_15min[12+count_1] + 1000
+                    count_1 += 1
         elif max(self.round_dailyEnergy()) > self.web_dailyEnergy:
             comp = max(self.round_dailyEnergy()) - self.web_dailyEnergy
-            while count_1 != (comp/1000):
-                energy_15min[20+count_1] = energy_15min[20+count_1] - 1000
-                count_1 += 1
+            if comp <= 20:    
+                while count_1 != (comp/1000):
+                    energy_15min[20+count_1] = energy_15min[20+count_1] - 1000
+                    count_1 += 1
+            elif comp > 20:
+                while count_1 != (comp/1000):
+                    energy_15min[15+count_1] = energy_15min[15+count_1] - 1000
+                    count_1 += 1
         for energy in energy_15min:
             energy = active_energy[count_2] + energy
             active_energy.append(energy)
@@ -73,11 +87,15 @@ class Inverter:
         if max(active_energy) - min(active_energy) == self.web_dailyEnergy:
             return active_energy
         else:
-            return sys.exit()
+            sys.exit()
 
     def check_value(self):
         check = max(self.increase_activeEnergy()) - min(self.increase_activeEnergy())
         return check   
+    
+    def latest_Energy(self):
+        max_energy = max(self.increase_activeEnergy())
+        return max_energy
         
     def create_CSV_files(self, asset = None, scope = None, time = None):
         dataframe = pd.DataFrame(
@@ -131,6 +149,104 @@ class Timeline:
         december = pd.read_csv("time_store/December.csv", header=0)
         return december[self.day_month_year]
 
-def merge_dataFrame(df_1=None, df_2=None, df_3=None, df_4=None, df_5=None, df_6=None, df_7=None, df_8=None, df_9=None, df_10=None):
-    dataFrame = df_1.append(df_2).append(df_3).append(df_4).append(df_5).append(df_6).append(df_7).append(df_8).append(df_9).append(df_10)
-    return dataFrame.to_csv("inverter.csv", index = False)
+class Setup_Inverter:
+    def __init__(self, choose_sheet_day=None , choose_columns=None, latest_day_energy=None, web_dailyEnergy=None, output_day=None, asset=None, scope=None):
+        self.choose_sheet_day = choose_sheet_day
+        self.output_day = output_day
+        self.choose_columns = choose_columns
+        self.latest_day_energy = latest_day_energy
+        self.web_dailyEnergy = web_dailyEnergy
+        self.asset = asset
+        self.scope = scope
+    
+    def setup_1(self):
+        inverter = Inverter(dataframe=DataFrame(self.choose_sheet_day, columns=[self.choose_columns]).values, latest_day_energy=self.latest_day_energy ,web_dailyEnergy=self.web_dailyEnergy)
+        return inverter
+    def get_dataframe(self):
+        df = self.setup_1().create_CSV_files(time=self.output_day, asset=self.asset, scope=self.scope)
+        return df
+
+class get_last_day_list:
+    def __init__(self, last_day_energy=None, website_energy_inverter=None):
+        self.last_day_energy = last_day_energy
+        self.website_energy_inverter = website_energy_inverter
+    def get_list(self):
+        list_last_day_energy = [self.last_day_energy]
+        count_1 = 0
+        for value in self.website_energy_inverter:
+            value = value + list_last_day_energy[count_1]
+            list_last_day_energy.append(value)
+            count_1 += 1
+        list_last_day_energy.pop(-1)
+        return list_last_day_energy
+
+class Inverter_for_days:
+    def __init__(self, number_Days = None, list_sheet_days=None, columns_name=None, days_enery=None, list_web_energy_inverter=None, list_output_days=None, asset_name=None, scope_name=None):
+        self.number_Days = number_Days
+        self.list_sheet_days = list_sheet_days
+        self.columns_name = columns_name
+        self.days_energy = days_enery
+        self.list_web_energy_inverter=list_web_energy_inverter
+        self.list_output_days = list_output_days
+        self.asset_name = asset_name
+        self.scope_name = scope_name
+    def create_df(self):
+        df_tem = []
+        x = 0
+        while x != self.number_Days:
+            per_inverter = Setup_Inverter(
+                choose_sheet_day=self.list_sheet_days[x],
+                choose_columns=self.columns_name,
+                latest_day_energy=self.days_energy[x],
+                web_dailyEnergy=self.list_web_energy_inverter[x],
+                output_day=self.list_output_days[x],
+                asset=self.asset_name,
+                scope=self.scope_name,
+            )
+            dframe = per_inverter.get_dataframe()
+            x += 1
+            df_tem.append(dframe)
+        for y in df_tem:
+            df_tem[0] = df_tem[0]
+            df_tem[0] = df_tem[0].append(y)
+        return df_tem[0][94: ]
+
+class Check_final_data:
+    def __init__(self,number=None , list_website_1=None, list_website_2=None, list_website_3=None, list_website_4=None, list_website_5=None, list_website_6=None, list_website_7=None):
+        self.number = number
+        self.list_1 = list_website_1
+        self.list_2 = list_website_2
+        self.list_3 = list_website_3
+        self.list_4 = list_website_4
+        self.list_5 = list_website_5
+        self.list_6 = list_website_6
+        self.list_7 = list_website_7
+    def result(self):
+        list = [self.list_1, self.list_2, self.list_3, self.list_4, self.list_5, self.list_6, self.list_7]
+        count = 0
+        check_data = []
+        for check in list[0]:
+            if self.number == 1:
+                value = list[0][count]
+            elif self.number == 2:
+                value = list[0][count] + list[1][count]
+            elif self.number == 3:
+                value = list[0][count] + list[1][count] + list[2][count]
+            elif self.number == 4:
+                value = list[0][count] + list[1][count] + list[2][count] + list[3][count]
+            elif self.number == 5:
+                value = list[0][count] + list[1][count] + list[2][count] + list[3][count] + list[4][count]
+            elif self.number == 6:
+                value = list[0][count] + list[1][count] + list[2][count] + list[3][count] + list[4][count] + list[5][count]
+            elif self.number == 7:
+                value = list[0][count] + list[1][count] + list[2][count] + list[3][count] + list[4][count] + list[5][count] + list[6][count]
+            check_data.append(value)
+            count += 1
+        return check_data
+
+def merge_df_day(df_day_1=None, df_day_2=None, df_day_3=None, df_day_4=None, df_day_5=None, df_day_6=None, df_day_7=None):
+    merge_dataframe_day = df_day_1.append(df_day_2).append(df_day_3).append(df_day_4).append(df_day_5).append(df_day_6).append(df_day_7)
+    return merge_dataframe_day.to_csv("inverter.csv", index=False)
+
+def single_df(df=None):
+    return df.to_csv("inverter.csv", index=False)
