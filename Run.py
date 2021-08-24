@@ -134,13 +134,13 @@ class stt_day:
     Day_6 = sheet_day("Day_6")
     Day_7 = sheet_day("Day_7")
 class Output_day:
-    day_1_Setup = Timeline(day_month_year=list_day()[0]).August()
-    day_2_Setup = Timeline(day_month_year=list_day()[1]).August()
-    day_3_Setup = Timeline(day_month_year=list_day()[2]).August()
-    day_4_Setup = Timeline(day_month_year=list_day()[3]).August()
-    day_5_Setup = Timeline(day_month_year=list_day()[4]).August()
-    day_6_Setup = Timeline(day_month_year=list_day()[5]).August()
-    day_7_Setup = Timeline(day_month_year=list_day()[6]).August()
+    day_1_Setup = Timeline(day_month_year=list_day()[0]).July()
+    day_2_Setup = Timeline(day_month_year=list_day()[1]).July()
+    day_3_Setup = Timeline(day_month_year=list_day()[2]).July()
+    day_4_Setup = Timeline(day_month_year=list_day()[3]).July()
+    day_5_Setup = Timeline(day_month_year=list_day()[4]).July()
+    day_6_Setup = Timeline(day_month_year=list_day()[5]).July()
+    day_7_Setup = Timeline(day_month_year=list_day()[6]).July()
 
 if __name__ == "__main__":
     ##Inputs:

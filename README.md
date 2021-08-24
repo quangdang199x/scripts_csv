@@ -12,11 +12,13 @@
 
 + [x] Kiểm tra lại giá trị trước khi export ra file inverter.csv chứa tất cả inverter trong site hoàn chỉnh;
 
-+ [ ] Bổ sung phần các giá trị inputs sử dụng YML;
++ [x] Bổ sung phần các giá trị inputs sử dụng YML;
 
 + [x] Tạo hàm để xuất thời gian mà không cần phải đổi bằng tay (tạo 1 file CSV chứa thời gian);
 
 + [x] Tạo hàm để xử lý việc xuất được một file "inverter.csv" chứa được nhiều ngày;
+
++ [ ] Tìm cách chỉnh phần add tháng mới.
 
 # Update database from csv - Single day
 
@@ -84,7 +86,7 @@ B/ Output:
 
 ### Quy trình thực hiện việc tạo và xuất một file CSV:
 
-+ File "create_csv.py" chứa các function cần thiết. File "Run.py" dùng để chạy chương trình xuất file CSV. File "inputs.py" dùng để nhập các thông số đầu vào và đầu ra. Mọi thao tác sẽ làm trên file "inputs.py";
++ File "create_csv.py" chứa các function cần thiết. File "Run.py" dùng để chạy chương trình xuất file CSV. File "inputs.yml" dùng để nhập các thông số đầu vào và đầu ra.;
 
 + Giả sử đã xác định được Site cần thực hiện, ví dụ ở đây là site Linh Trung 8, ta tiến hành theo các bước bên dưới;
 
