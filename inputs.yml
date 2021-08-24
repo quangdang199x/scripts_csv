@@ -1,0 +1,111 @@
+inverters:
+  - number_day: 3
+  - number_inverter: 3
+  - generated_energy: 
+      day_1: 1150000
+      day_2: 1563000
+      day_3: 1663000
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+##Choose day:
+  - days:
+      day_1: 28/8/2021
+      day_2: 29/8/2021
+      day_3: 30/8/2021
+      day_4: 1/8/2021
+      day_5: 1/8/2021
+      day_6: 1/8/2021
+      day_7: 1/8/2021
+##inverter 1:
+  - entity_name: PVS-100-TL-OUTD SN 115179-3Q15-4020
+    asset: ABB-115179-3Q15-4020
+    scope: b107e879-e80b-499d-9e12-2b8c0a6cb4bf
+    daily_energy: 
+      day_1: 355000
+      day_2: 539000
+      day_3: 563000
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 119332000
+##inverter 2:
+  - entity_name: PVS-100-TL-OUTD SN 115190-3Q15-4020
+    asset: ABB-115190-3Q15-4020
+    scope: b107e879-e80b-499d-9e12-2b8c0a6cb4bf
+    daily_energy: 
+      day_1: 381000
+      day_2: 486000
+      day_3: 522000
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 110292000
+##inverter 3:
+  - entity_name: PVS-100-TL-OUTD SN 115228-3Q15-4020
+    asset: ABB-115228-3Q15-4020
+    scope: b107e879-e80b-499d-9e12-2b8c0a6cb4bf
+    daily_energy: 
+      day_1: 414000
+      day_2: 538000
+      day_3: 578000
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 61662000
+##inverter 4:
+  - entity_name: !!null
+    asset: !!null
+    scope: !!null
+    daily_energy: 
+      day_1: 0
+      day_2: 0
+      day_3: 0
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 0
+##inverter 5:
+  - entity_name: !!null
+    asset: !!null
+    scope: !!null
+    daily_energy: 
+      day_1: 0
+      day_2: 0
+      day_3: 0
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 0
+##inverter 6:
+  - entity_name: !!null
+    asset: !!null
+    scope: !!null
+    daily_energy: 
+      day_1: 0
+      day_2: 0
+      day_3: 0
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 0
+##inverter 7:
+  - entity_name: !!null
+    asset: !!null
+    scope: !!null
+    daily_energy: 
+      day_1: 0
+      day_2: 0
+      day_3: 0
+      day_4: 0
+      day_5: 0
+      day_6: 0
+      day_7: 0
+    active_energy: 0
