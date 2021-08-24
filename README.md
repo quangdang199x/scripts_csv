@@ -94,15 +94,25 @@ B/ Output:
 
  + Xác định được các ngày còn thiếu, số lượng inverter trong site và điền vào dòng code: "number_Day" và "number_inverter". Hiện tại chỉ mới nhập được tối đa 7 ngày và tối đa 7 inverter. Số lượng này có thể tăng thêm.
 
- + Vào "Solarmon" -> "LT8" -> "Devices" -> "Edit Device" -> Copy phần "ID" để lấy Asset của inverter; ![image](https://user-images.githubusercontent.com/87714271/130497398-baf6264f-51d0-44b5-87f5-8640b01c7a72.png)
+ + Vào "Solarmon" -> "LT8" -> "Devices" -> "Edit Device" -> Copy phần "ID" để lấy Asset của inverter; 
 
- + Sử dụng "ID" vừa copy và vào database paste vào mục tìm kiếm để lấy "Lastest active energy" và "Scope" của inverter có ID đó. Làm tương tự cho các inverter khác. ![image](https://user-images.githubusercontent.com/87714271/130497905-4b3ef417-8708-484e-9080-a47f4a813ca2.png)
+ ![image](https://user-images.githubusercontent.com/87714271/130497398-baf6264f-51d0-44b5-87f5-8640b01c7a72.png)
+
+ + Sử dụng "ID" vừa copy và vào database paste vào mục tìm kiếm để lấy "Lastest active energy" và "Scope" của inverter có ID đó. Làm tương tự cho các inverter khác. 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130497905-4b3ef417-8708-484e-9080-a47f4a813ca2.png)
  
- + Download file chứa phần active power của tất cả inverter trong site về. Copy phần "Entity Name" và phần "Active Power" (theo đúng thứ tự) sau đó paste sang file "download.xlsx"; ![image](https://user-images.githubusercontent.com/87714271/130495687-456107b5-aef5-4664-b6e0-0ef7206e1550.png)
+ + Download file chứa phần active power của tất cả inverter trong site về. Copy phần "Entity Name" và phần "Active Power" (theo đúng thứ tự) sau đó paste sang file "download.xlsx"; 
 
- + Lên website của hãng và lấy giá trị total daily energy của tất cả inverter trong site ở ngày cần làm. Nhập giá trị đó vào: "total_dailyEnergy_site = None" ở file "inputs.py"; ![image](https://user-images.githubusercontent.com/87714271/130494020-fcf82d78-5927-4b77-9dd5-dbc57677aa19.png)
+ ![image](https://user-images.githubusercontent.com/87714271/130495687-456107b5-aef5-4664-b6e0-0ef7206e1550.png)
 
- + Xác định được web_dailyEnergy ứng với mỗi inverter trong site (lấy giá trị này ở website của hãng inverter); ![image](https://user-images.githubusercontent.com/87714271/130494487-73e6562b-f56f-4456-915f-73505ff10838.png)
+ + Lên website của hãng và lấy giá trị total daily energy của tất cả inverter trong site ở ngày cần làm. Nhập giá trị đó vào: "total_dailyEnergy_site = None" ở file "inputs.py"; 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130494020-fcf82d78-5927-4b77-9dd5-dbc57677aa19.png)
+
+ + Xác định được web_dailyEnergy ứng với mỗi inverter trong site (lấy giá trị này ở website của hãng inverter); 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130494487-73e6562b-f56f-4456-915f-73505ff10838.png)
 
  + Nhập vào các asset, scope, mốc latest day energy (đã lấy các giá trị này ở database bước trên);
 
@@ -110,10 +120,20 @@ B/ Output:
 
  + Chạy file "Run.py" và import file "inverter.csv" vừa tạo được vào database.
 
- + Hình ảnh trên Website của hãng: ![image](https://user-images.githubusercontent.com/87714271/130494382-165a658c-8408-42a8-a950-639fd16a7feb.png) ![image](https://user-images.githubusercontent.com/87714271/130494020-fcf82d78-5927-4b77-9dd5-dbc57677aa19.png)
+ + Hình ảnh trên Website của hãng: 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130494382-165a658c-8408-42a8-a950-639fd16a7feb.png) 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130494020-fcf82d78-5927-4b77-9dd5-dbc57677aa19.png)
 
 
- + Hình ảnh thu được trên solarmon sau khi import file "inverter.csv" vào database: ![image](https://user-images.githubusercontent.com/87714271/130495463-118abe90-21a3-44e2-b2f4-2670aed9265c.png) ![image](https://user-images.githubusercontent.com/87714271/130495511-1a4a7bda-6eaa-48f6-81e7-e94a10373ee6.png) ![image](https://user-images.githubusercontent.com/87714271/130499788-7a51ba8e-f74d-468b-a42d-987e8a6e0423.png)
+ + Hình ảnh thu được trên solarmon sau khi import file "inverter.csv" vào database: 
+ 
+ ![image](https://user-images.githubusercontent.com/87714271/130495463-118abe90-21a3-44e2-b2f4-2670aed9265c.png) 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130495511-1a4a7bda-6eaa-48f6-81e7-e94a10373ee6.png) 
+
+ ![image](https://user-images.githubusercontent.com/87714271/130499788-7a51ba8e-f74d-468b-a42d-987e8a6e0423.png)
 
 
  
