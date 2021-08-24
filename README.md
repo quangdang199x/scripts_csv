@@ -18,7 +18,9 @@
 
 + [x] Tạo hàm để xử lý việc xuất được một file "inverter.csv" chứa được nhiều ngày;
 
-+ [ ] Tìm cách chỉnh phần add tháng mới.
++ [x] Tìm cách chỉnh phần add tháng mới.
+
++ [ ] Tối ưu hóa code cho nhiều Inverter hơn.
 
 # Update database from csv - Single day
 
