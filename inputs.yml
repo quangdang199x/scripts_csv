@@ -17,7 +17,7 @@ inverters:
       day_4: 26/7/2021
       day_5: 27/7/2021
       day_6: 28/7/2021
-      day_7: 29/7/2021
+      day_7: 28/7/2021
 ##inverter 1:
   - entity_name: PVS-100-TL-OUTD SN 114589-3Q15-3720
     asset: ABB-114589-3Q15-3720

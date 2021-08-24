@@ -1,7 +1,6 @@
 import pandas as pd
 from pandas.core.frame import DataFrame
 import sys
-import yaml
 
 def sheet_day(sheet_data = None):
     read_file = pd.read_excel("download.xlsx",sheet_name=sheet_data, header = 0)
@@ -111,43 +110,10 @@ class Inverter:
 
 class Timeline:
     def __init__(self, day_month_year = None):
-        self.day_month_year = day_month_year  
-    def January(self):
-        january = pd.read_csv("time_store/January.csv", header=0)
-        return january[self.day_month_year]
-    def February(self):
-        february = pd.read_csv("time_store/February.csv", header=0)
-        return february[self.day_month_year]
-    def March(self):
-        march = pd.read_csv("time_store/March.csv", header=0)
-        return march[self.day_month_year]
-    def April(self):
-        april = pd.read_csv("time_store/April.csv", header=0)
-        return april[self.day_month_year]
-    def May(self):
-        may = pd.read_csv("time_store/May.csv", header=0)
-        return may[self.day_month_year]
-    def June(self):
-        june = pd.read_csv("time_store/June.csv", header=0)
-        return june[self.day_month_year]
-    def July(self):
-        july = pd.read_csv("time_store/July.csv", header=0)
-        return july[self.day_month_year]
-    def August(self):
-        august = pd.read_csv("time_store/August.csv", header=0)
-        return august[self.day_month_year]
-    def September(self):
-        september = pd.read_csv("time_store/September.csv", header=0)
-        return september[self.day_month_year]
-    def October(self):
-        october = pd.read_csv("time_store/October.csv", header=0)
-        return october[self.day_month_year]
-    def November(self):
-        november = pd.read_csv("time_store/November.csv", header=0)
-        return november[self.day_month_year]
-    def December(self):
-        december = pd.read_csv("time_store/December.csv", header=0)
-        return december[self.day_month_year]
+        self.day_month_year = day_month_year
+    def get_time(self):
+        get_time = pd.read_csv("time_store/time.csv", header=0)
+        return get_time[self.day_month_year]
 
 class Setup_Inverter:
     def __init__(self, choose_sheet_day=None , choose_columns=None, latest_day_energy=None, web_dailyEnergy=None, output_day=None, asset=None, scope=None):
