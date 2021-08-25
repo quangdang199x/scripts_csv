@@ -1,6 +1,7 @@
 import pandas as pd
 from pandas.core.frame import DataFrame
 import sys
+import yaml
 
 def sheet_day(sheet_data = None):
     read_file = pd.read_excel("download.xlsx",sheet_name=sheet_data, header = 0)
@@ -177,42 +178,22 @@ class Inverter_for_days:
             df_tem[0] = df_tem[0].append(y)
         return df_tem[0][94: ]
 
-class Check_final_data:
-    def __init__(self,number=None , list_website_1=None, list_website_2=None, list_website_3=None, list_website_4=None, list_website_5=None, list_website_6=None, list_website_7=None):
-        self.number = number
-        self.list_1 = list_website_1
-        self.list_2 = list_website_2
-        self.list_3 = list_website_3
-        self.list_4 = list_website_4
-        self.list_5 = list_website_5
-        self.list_6 = list_website_6
-        self.list_7 = list_website_7
-    def result(self):
-        list = [self.list_1, self.list_2, self.list_3, self.list_4, self.list_5, self.list_6, self.list_7]
-        count = 0
-        check_data = []
-        for check in list[0]:
-            if self.number == 1:
-                value = list[0][count]
-            elif self.number == 2:
-                value = list[0][count] + list[1][count]
-            elif self.number == 3:
-                value = list[0][count] + list[1][count] + list[2][count]
-            elif self.number == 4:
-                value = list[0][count] + list[1][count] + list[2][count] + list[3][count]
-            elif self.number == 5:
-                value = list[0][count] + list[1][count] + list[2][count] + list[3][count] + list[4][count]
-            elif self.number == 6:
-                value = list[0][count] + list[1][count] + list[2][count] + list[3][count] + list[4][count] + list[5][count]
-            elif self.number == 7:
-                value = list[0][count] + list[1][count] + list[2][count] + list[3][count] + list[4][count] + list[5][count] + list[6][count]
-            check_data.append(value)
-            count += 1
-        return check_data
-
-def merge_df_day(df_day_1=None, df_day_2=None, df_day_3=None, df_day_4=None, df_day_5=None, df_day_6=None, df_day_7=None):
-    merge_dataframe_day = df_day_1.append(df_day_2).append(df_day_3).append(df_day_4).append(df_day_5).append(df_day_6).append(df_day_7)
-    return merge_dataframe_day.to_csv("inverter.csv", index=False)
+class entity_Name:
+    def __init__(self, colums_Name = None):
+        self.columns_Name = colums_Name
+    def entity_name(self):
+        n_list = []
+        counts = 0
+        while counts != len(self.columns_Name):
+            values = DataFrame(sheet_day("Daily_energy"), columns=[self.columns_Name[counts]]).values    
+            list_1 = []        
+            for value in values:
+                value = int(value)*1000
+                list_1.append(value)
+            list_1.extend([0]*(7 - len(list_1)))
+            n_list.append(list_1)
+            counts += 1
+        return n_list
 
 def single_df(df=None):
     return df.to_csv("inverter.csv", index=False)

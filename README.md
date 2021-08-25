@@ -20,7 +20,7 @@
 
 + [x] Tìm cách chỉnh phần add tháng mới.
 
-+ [ ] Tối ưu hóa code cho nhiều Inverter hơn.
++ [x] Tối ưu hóa code cho nhiều Inverter hơn.
 
 # Update database from csv - Single day
 
