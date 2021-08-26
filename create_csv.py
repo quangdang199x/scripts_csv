@@ -1,7 +1,6 @@
 import pandas as pd
 from pandas.core.frame import DataFrame
 import sys
-import yaml
 
 def sheet_day(sheet_data = None):
     read_file = pd.read_excel("download.xlsx",sheet_name=sheet_data, header = 0)
@@ -160,6 +159,7 @@ class Inverter_for_days:
     def create_df(self):
         df_tem = []
         x = 0
+        y = 1
         while x != self.number_Days:
             per_inverter = Setup_Inverter(
                 choose_sheet_day=self.list_sheet_days[x],
@@ -173,10 +173,10 @@ class Inverter_for_days:
             dframe = per_inverter.get_dataframe()
             x += 1
             df_tem.append(dframe)
-        for y in df_tem:
-            df_tem[0] = df_tem[0]
-            df_tem[0] = df_tem[0].append(y)
-        return df_tem[0][94: ]
+        while y != len(df_tem):
+            df_tem[0] = df_tem[0].append(df_tem[y])
+            y += 1
+        return df_tem[0]
 
 class entity_Name:
     def __init__(self, colums_Name = None):
@@ -195,5 +195,21 @@ class entity_Name:
             counts += 1
         return n_list
 
+class Check_final_data:
+    def __init__(self, number_inverter = None, list=None):
+        self.list = list
+        self.number_inverter = number_inverter
+    def result(self):
+        (self.list).append(self.list[0].copy())
+        count = 0
+        for check in self.list[0]:
+            x = 1
+            while x != self.number_inverter:
+                self.list[-1][count] = self.list[-1][count] + self.list[x][count]
+                x += 1
+            count += 1
+        resuft = self.list.pop(-1)
+        return resuft
+        
 def single_df(df=None):
     return df.to_csv("inverter.csv", index=False)

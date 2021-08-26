@@ -2,61 +2,49 @@ inverters:
   - number_day: 7
   - number_inverter: 5
   - generated_energy: 
-      day_1: 1235000
-      day_2: 2757000
-      day_3: 2400000
-      day_4: 2761000
-      day_5: 2001000
-      day_6: 1792000
-      day_7: 1583000
+      day_1: 2708000
+      day_2: 2698000
+      day_3: 2641000
+      day_4: 2649000
+      day_5: 2768000
+      day_6: 2366000
+      day_7: 2468000
 ##Choose day:
   - days:
-      day_1: 23/7/2021
-      day_2: 24/7/2021
-      day_3: 25/7/2021
-      day_4: 26/7/2021
-      day_5: 27/7/2021
-      day_6: 28/7/2021
-      day_7: 28/7/2021
+      day_1: 30/7/2021
+      day_2: 31/7/2021
+      day_3: 1/8/2021
+      day_4: 2/8/2021
+      day_5: 3/8/2021
+      day_6: 4/8/2021
+      day_7: 5/8/2021
       
 ##inverter 1:
   - entity_name: PVS-100-TL-OUTD SN 114589-3Q15-3720
     asset: ABB-114589-3Q15-3720
     scope: 16ed6a4c-00cd-49db-a698-2f9512c12f58
-    active_energy: 105221000
+    active_energy: 108129000
 
 ##inverter 2:
   - entity_name: PVS-100-TL-OUTD SN 115146-3Q15-4020
     asset: ABB-115146-3Q15-4020
     scope: 16ed6a4c-00cd-49db-a698-2f9512c12f58
-    active_energy: 103832000
+    active_energy: 106660000
 
 ##inverter 3:
   - entity_name: PVS-100-TL-OUTD SN 115164-3Q15-4020
     asset: ABB-115164-3Q15-4020
     scope: 16ed6a4c-00cd-49db-a698-2f9512c12f58
-    active_energy: 105356000
+    active_energy: 108284000
 
 ##inverter 4:
   - entity_name: PVS-100-TL-OUTD SN 115172-3Q15-4020
     asset: ABB-115172-3Q15-4020
     scope: 16ed6a4c-00cd-49db-a698-2f9512c12f58
-    active_energy: 103824000
+    active_energy: 106698000
 
 ##inverter 5:
   - entity_name: PVS-100-TL-OUTD SN 115201-3Q15-4020
     asset: ABB-115201-3Q15-4020
     scope: 16ed6a4c-00cd-49db-a698-2f9512c12f58
-    active_energy: 80113000
-
-##inverter 6:
-  - entity_name: !!null
-    asset: !!null
-    scope: !!null
-    active_energy: 0
-
-##inverter 7:
-  - entity_name: !!null
-    asset: !!null
-    scope: !!null
-    active_energy: 0
+    active_energy: 83104000

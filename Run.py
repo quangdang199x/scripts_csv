@@ -1,4 +1,4 @@
-from create_csv import sheet_day, single_df, Timeline, get_last_day_list, Inverter_for_days
+from create_csv import sheet_day, single_df, Timeline, get_last_day_list, Inverter_for_days, Check_final_data
 from create_csv import entity_Name
 import yaml
 
@@ -87,21 +87,30 @@ def cov_Wh():
         count += 1
     return list_1
 def final_df():
-    cou = 0
+    x = 0
+    y = 1
     fn_df = []
-    while cou != number_inverter:
-        inverter_1 = Inverter_for_days(number_Days = number_day, list_sheet_days = list_sheet_days, columns_name=columns_name[cou], days_enery=cov_Wh()[cou], list_web_energy_inverter = web_inverter()[cou], list_output_days=list_output_days, asset_name=list_asset_1[cou], scope_name=list_scope_1[cou])
-        fn_df.append(inverter_1.create_df())
-        cou += 1
-    return fn_df
+    while x != number_inverter:
+        inverter = Inverter_for_days(number_Days = number_day, list_sheet_days = list_sheet_days, columns_name=columns_name[x], days_enery=cov_Wh()[x], list_web_energy_inverter = web_inverter()[x], list_output_days=list_output_days, asset_name=list_asset_1[x], scope_name=list_scope_1[x])
+        fn_df.append(inverter.create_df())
+        x += 1
+    while y != len(fn_df):
+        fn_df[0] = fn_df[0].append(fn_df[y])
+        y += 1
+    return fn_df[0]
+    
 if __name__ == "__main__":
+    check_data = Check_final_data(number_inverter=number_inverter, list=web_inverter()).result()
     if number_inverter == 1:
-        single_df(final_df()[0])
-        print("Successfully for creating CSV files!")
+        if check_data == tt_web_energy():
+            single_df(final_df()[0])
+            print("Successfully for creating CSV files!")
+        else:
+            print(f"Error! List total website energy: {tt_web_energy()} doesn't equal list check_data: {check_data}!")
     elif number_inverter != 1:
-        count = 1
-        while count != len(final_df()):
-            final_df()[0] = final_df()[0].append(final_df()[count])
-            count += 1
-        single_df(final_df()[0])
-        print("Successfully for creating CSV files!")
+        if check_data == tt_web_energy():
+            single_df(final_df())
+            print("Successfully for creating CSV files!")
+        else:
+            print(f"Error! List total website energy: {tt_web_energy()} doesn't equal list check_data: {check_data}!")
+            
